@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ skill.name }} Calc</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="window-container">
+        <div class="header-bar">{{ skill.name }} Calculator</div>
+        <div style="text-align: center; padding: 20px;">
+            <img src="{{ url_for('static', filename='icons/' + skill.item) }}" style="width: 50px;">
+            <h2 style="color: #ff981f;">{{ skill.name }}</h2>
+            
+            <form method="post" style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="number" name="current_xp" placeholder="Current XP">
+                <input type="number" name="target_level" placeholder="Target Level">
+                <button type="submit" style="background: #5d503d; color: white; border: 1px solid #211c14; padding: 5px;">Calculate</button>
+            </form>
+
+            {% if result %}
+                <div style="margin-top: 20px; color: #ffffff; font-size: 0.8em; text-align: left;">
+                    <p>XP Needed: {{ result.xp_needed }}</p>
+                </div>
+            {% endif %}
+            
+            <a href="/" style="color: #aaaaaa; font-size: 0.7em; display: block; margin-top: 20px;">← Back</a>
+        </div>
+    </div>
+</body>
+</html>
